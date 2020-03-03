@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import logo from '../../assets/logo.svg';
 
@@ -60,9 +62,21 @@ const useStyles = makeStyles(theme => ({
 export default function Header(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleChange = (e, value) => {
     setValue(value);
+  };
+
+  const handleClick = e => {
+    setAnchorEl(e.currentTarget);
+    setOpen(true);
+  };
+
+  const handleClose = e => {
+    setAnchorEl(null);
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -84,61 +98,75 @@ export default function Header(props) {
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar position="fixed">
+        <AppBar position='fixed'>
           <Toolbar disableGutters>
             <Button
               component={Link}
-              to="/"
+              to='/'
               className={classes.logoContainer}
               onClick={() => setValue(0)}
               disableRipple
             >
-              <img src={logo} alt="Company Logo" className={classes.logo} />
+              <img src={logo} alt='Company Logo' className={classes.logo} />
             </Button>
             <Tabs
               value={value}
               onChange={handleChange}
               className={classes.tabContainer}
-              indicatorColor="primary"
+              indicatorColor='primary'
             >
               <Tab
                 className={classes.tab}
                 component={Link}
-                to="/"
-                label="Home"
+                to='/'
+                label='Home'
+              />
+              <Tab
+                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                aria-haspopup={anchorEl ? 'true' : undefined}
+                className={classes.tab}
+                component={Link}
+                onMouseOver={event => handleClick(event)}
+                to='/services'
+                label='Services'
               />
               <Tab
                 className={classes.tab}
                 component={Link}
-                to="/services"
-                label="Services"
+                to='/revolution'
+                label='The Revolution'
               />
               <Tab
                 className={classes.tab}
                 component={Link}
-                to="/revolution"
-                label="The Revolution"
+                to='/about'
+                label='About Us'
               />
               <Tab
                 className={classes.tab}
                 component={Link}
-                to="/about"
-                label="About Us"
-              />
-              <Tab
-                className={classes.tab}
-                component={Link}
-                to="/contact"
-                label="Contact Us"
+                to='/contact'
+                label='Contact Us'
               />
             </Tabs>
             <Button
-              variant="contained"
-              color="secondary"
+              variant='contained'
+              color='secondary'
               className={classes.button}
             >
               Free Estimate
             </Button>
+            <Menu
+              id='simple-menu'
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{ onMouseLeave: handleClose }}
+            >
+              <MenuItem onClick={handleClose}>Custom Software</MenuItem>
+              <MenuItem onClick={handleClose}>Mobile App Development</MenuItem>
+              <MenuItem onClick={handleClose}>Website Development</MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
