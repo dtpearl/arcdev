@@ -21,13 +21,21 @@ export default createMuiTheme({
       fontFamily: 'Raleway',
       textTransform: 'none',
       fontWeight: 700,
-      fontSize: '1rem'
+      fontSize: '1rem',
+      color: 'white'
     },
     estimate: {
       fontFamily: 'Pacifico',
       fontSize: '1rem',
       textTransform: 'none',
       color: 'white'
+    },
+    h2: {
+      fontFamily: 'Raleway',
+      fontWeight: 700,
+      fontSize: '2.5rem',
+      color: `${arcBlue}`,
+      lineHeight: 1.5
     }
   }
 });
