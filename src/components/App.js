@@ -68,12 +68,7 @@ function App() {
             component={() => <div style={{ height: '150vh' }}>Estimate</div>}
           />
         </Switch>
-        <Footer
-          value={value}
-          setValue={setValue}
-          selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-        />
+        <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
     </ThemeProvider>
   );
