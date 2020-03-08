@@ -64,13 +64,13 @@ export default function Footer(props) {
   return (
     <footer className={classes.footer}>
       <Hidden mdDown>
-        <Grid container justify="center" className={classes.mainContainer}>
+        <Grid container justify='center' className={classes.mainContainer}>
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction='column' spacing={2}>
               <Grid
                 item
                 component={Link}
-                to="/"
+                to='/'
                 className={classes.link}
                 onClick={() => setValue(0)}
               >
@@ -80,12 +80,12 @@ export default function Footer(props) {
           </Grid>
           {/* END HOME */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction='column' spacing={2}>
               <Grid
                 item
                 className={classes.link}
                 component={Link}
-                to="/services"
+                to='/services'
                 onClick={() => {
                   setValue(1);
                   setSelectedIndex(0);
@@ -97,7 +97,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/customsoftware"
+                to='/customsoftware'
                 onClick={() => {
                   setValue(1);
                   setSelectedIndex(1);
@@ -109,19 +109,19 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/mobileapps"
+                to='/mobileapps'
                 onClick={() => {
                   setValue(1);
                   setSelectedIndex(2);
                 }}
               >
-                Mobile App Development
+                iOS/Andorid App Development
               </Grid>
               <Grid
                 item
                 className={classes.link}
                 component={Link}
-                to="/websites"
+                to='/websites'
                 onClick={() => {
                   setValue(1);
                   setSelectedIndex(3);
@@ -133,12 +133,12 @@ export default function Footer(props) {
           </Grid>
           {/* END SERVICES */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction='column' spacing={2}>
               <Grid
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                to='/revolution'
                 onClick={() => setValue(2)}
               >
                 The Revolution
@@ -147,7 +147,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                to='/revolution'
                 onClick={() => setValue(2)}
               >
                 Vision
@@ -156,7 +156,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                to='/revolution'
                 onClick={() => setValue(2)}
               >
                 Technology
@@ -165,7 +165,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/revolution"
+                to='/revolution'
                 onClick={() => setValue(2)}
               >
                 Process
@@ -174,12 +174,12 @@ export default function Footer(props) {
           </Grid>
           {/* END REVOLUTION */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction='column' spacing={2}>
               <Grid
                 item
                 className={classes.link}
                 component={Link}
-                to="/about"
+                to='/about'
                 onClick={() => setValue(3)}
               >
                 About Us
@@ -188,7 +188,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/about"
+                to='/about'
                 onClick={() => setValue(3)}
               >
                 History
@@ -197,7 +197,7 @@ export default function Footer(props) {
                 item
                 className={classes.link}
                 component={Link}
-                to="/about"
+                to='/about'
                 onClick={() => setValue(3)}
               >
                 Team
@@ -206,12 +206,12 @@ export default function Footer(props) {
           </Grid>
           {/* END ABOUT US */}
           <Grid item className={classes.gridItem}>
-            <Grid container direction="column" spacing={2}>
+            <Grid container direction='column' spacing={2}>
               <Grid
                 item
                 className={classes.link}
                 component={Link}
-                to="/contact"
+                to='/contact'
                 onClick={() => setValue(4)}
               >
                 Contact Us
@@ -223,42 +223,42 @@ export default function Footer(props) {
         {/* END MAIN CONTAINER */}
       </Hidden>
       <img
-        alt="Decorative black slash"
+        alt='Decorative black slash'
         src={footerAdornment}
         className={classes.adornment}
       />
       <Grid
         container
-        justify="flex-end"
+        justify='flex-end'
         spacing={2}
         className={classes.socialContainer}
       >
         <Grid
           item
           component={'a'}
-          href="https://www.facebook.com"
-          rel="noopener noreferrer"
-          target="_blank"
+          href='https://www.facebook.com'
+          rel='noopener noreferrer'
+          target='_blank'
         >
-          <img alt="Facebook logo" src={facebook} className={classes.icon} />
+          <img alt='Facebook logo' src={facebook} className={classes.icon} />
         </Grid>
         <Grid
           item
           component={'a'}
-          href="https://www.twitter.com"
-          rel="noopener noreferrer"
-          target="_blank"
+          href='https://www.twitter.com'
+          rel='noopener noreferrer'
+          target='_blank'
         >
-          <img alt="Twitter logo" src={twitter} className={classes.icon} />
+          <img alt='Twitter logo' src={twitter} className={classes.icon} />
         </Grid>
         <Grid
           item
           component={'a'}
-          href="https://www.instagram.com"
-          rel="noopener noreferrer"
-          target="_blank"
+          href='https://www.instagram.com'
+          rel='noopener noreferrer'
+          target='_blank'
         >
-          <img alt="Instagram logo" src={instagram} className={classes.icon} />
+          <img alt='Instagram logo' src={instagram} className={classes.icon} />
         </Grid>
       </Grid>
     </footer>
