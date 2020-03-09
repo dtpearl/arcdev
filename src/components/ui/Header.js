@@ -209,6 +209,9 @@ export default function Header(props) {
             }
           }
           break;
+        case '/estimate':
+          setValue(5);
+          break;
         default:
           break;
       }
@@ -229,7 +232,7 @@ export default function Header(props) {
         value={value}
         onChange={handleChange}
         className={classes.tabContainer}
-        indicatorColor='primary'
+        indicatorColor="primary"
       >
         {routes.map((route, index) => (
           <Tab
@@ -245,17 +248,17 @@ export default function Header(props) {
         ))}
       </Tabs>
       <Button
-        variant='contained'
-        color='secondary'
+        variant="contained"
+        color="secondary"
         className={classes.button}
         component={Link}
-        to='/estimate'
+        to="/estimate"
         onClick={() => setValue(5)}
       >
         Free Estimate
       </Button>
       <Menu
-        id='simple-menu'
+        id="simple-menu"
         anchorEl={anchorEl}
         open={openMenu}
         onClose={handleClose}
@@ -336,7 +339,7 @@ export default function Header(props) {
               setValue(5);
             }}
             component={Link}
-            to='/estimate'
+            to="/estimate"
           >
             <ListItemText className={classes.drawerItem} disableTypography>
               Free Estimate
@@ -357,16 +360,16 @@ export default function Header(props) {
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar position='fixed' className={classes.appbar}>
+        <AppBar position="fixed" className={classes.appbar}>
           <Toolbar disableGutters>
             <Button
               component={Link}
-              to='/'
+              to="/"
               className={classes.logoContainer}
               onClick={() => setValue(0)}
               disableRipple
             >
-              <img src={logo} alt='Company Logo' className={classes.logo} />
+              <img src={logo} alt="Company Logo" className={classes.logo} />
             </Button>
             {matches ? drawer : tabs}
           </Toolbar>
