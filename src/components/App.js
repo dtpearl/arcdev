@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from './ui/Theme';
-import Header from '../components/ui/Header';
-import Footer from '../components/ui/Footer';
-import LandingPage from '../components/LandingPage';
+import Header from './ui/Header';
+import Footer from './ui/Footer';
+import LandingPage from './LandingPage';
+import Services from './Services';
 
 function App() {
   const [value, setValue] = useState(0);
@@ -35,7 +36,13 @@ function App() {
           <Route
             exact
             path="/services"
-            component={() => <div style={{ height: '150vh' }}>Services</div>}
+            render={props => (
+              <Services
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
           <Route
             exact
