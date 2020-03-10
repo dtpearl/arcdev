@@ -9,6 +9,7 @@ import LandingPage from './LandingPage';
 import Services from './Services';
 import CustomSoftware from './CustomSoftware';
 import MobileApps from './MobileApps';
+import Websites from './Websites';
 
 function App() {
   const [value, setValue] = useState(0);
@@ -71,7 +72,13 @@ function App() {
           <Route
             exact
             path="/websites"
-            component={() => <div style={{ height: '150vh' }}>Websites</div>}
+            render={props => (
+              <Websites
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
           <Route
             exact
