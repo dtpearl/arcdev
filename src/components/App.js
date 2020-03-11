@@ -11,6 +11,7 @@ import CustomSoftware from './CustomSoftware';
 import MobileApps from './MobileApps';
 import Websites from './Websites';
 import Revolution from './Revolution';
+import About from './About';
 
 function App() {
   const [value, setValue] = useState(0);
@@ -95,7 +96,13 @@ function App() {
           <Route
             exact
             path="/about"
-            component={() => <div style={{ height: '150vh' }}>About</div>}
+            render={props => (
+              <About
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
           <Route
             exact
