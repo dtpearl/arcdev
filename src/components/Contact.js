@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -10,6 +11,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Snackboo from '@material-ui/core/Snackbar';
 
 import background from '../assets/background.jpg';
 import mobileBackground from '../assets/mobileBackground.jpg';
@@ -97,6 +100,12 @@ export default function Contact(props) {
   const [phoneHelper, setPhoneHelper] = useState('');
 
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: '',
+    backgroundColor: ''
+  });
 
   const handleChange = event => {
     let valid;
@@ -130,6 +139,47 @@ export default function Contact(props) {
         break;
     }
   };
+
+  const onConfirm = () => {
+    setLoading(true);
+    axios
+      .get('https://us-central1-materiauicourse.cloudfunctions.net/sendMail', {
+        params: {
+          name: name,
+          email: email,
+          phone: phone,
+          message: message
+        }
+      })
+      .then(res => {
+        setLoading(false);
+        setOpen(false);
+        setName('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
+        setAlert({
+          open: true,
+          message: 'Message sent successfully!',
+          backgroundColor: '#4bb543'
+        });
+      })
+      .catch(err => {
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: 'Something went wrong, please try again.',
+          backgroundColor: '#ff3232'
+        });
+      });
+  };
+
+  const buttonContents = (
+    <React.Fragment>
+      Send Message
+      <img src={airplane} alt="paper airplane" style={{ marginLeft: '1em' }} />
+    </React.Fragment>
+  );
 
   return (
     <Grid container direction="row">
@@ -271,12 +321,7 @@ export default function Contact(props) {
                 onClick={() => setOpen(true)}
                 className={classes.sendButton}
               >
-                Send Message
-                <img
-                  src={airplane}
-                  alt="paper airplane"
-                  style={{ marginLeft: '1em' }}
-                />
+                {buttonContents}
               </Button>
             </Grid>
           </Grid>
@@ -374,20 +419,23 @@ export default function Contact(props) {
                 //   phoneHelper.length !== 0 ||
                 //   emailHelper.length !== 0
                 // }
-                onClick={() => setOpen(true)}
+                onClick={onConfirm}
                 className={classes.sendButton}
               >
-                Send Message
-                <img
-                  src={airplane}
-                  alt="paper airplane"
-                  style={{ marginLeft: '1em' }}
-                />
+                {loading ? <CircularProgress size={30} /> : buttonContents}
               </Button>
             </Grid>
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackboo
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={4000}
+      />
       <Grid
         item
         container
