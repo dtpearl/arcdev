@@ -13,6 +13,7 @@ import Websites from './Websites';
 import Revolution from './Revolution';
 import About from './About';
 import Contact from './Contact';
+import Estimate from './Estimate';
 
 function App() {
   const [value, setValue] = useState(0);
@@ -30,7 +31,7 @@ function App() {
         <Switch>
           <Route
             exact
-            path='/'
+            path="/"
             render={props => (
               <LandingPage
                 {...props}
@@ -41,7 +42,7 @@ function App() {
           />
           <Route
             exact
-            path='/services'
+            path="/services"
             render={props => (
               <Services
                 {...props}
@@ -52,7 +53,7 @@ function App() {
           />
           <Route
             exact
-            path='/customsoftware'
+            path="/customsoftware"
             render={props => (
               <CustomSoftware
                 {...props}
@@ -63,7 +64,7 @@ function App() {
           />
           <Route
             exact
-            path='/mobileapps'
+            path="/mobileapps"
             render={props => (
               <MobileApps
                 {...props}
@@ -74,7 +75,7 @@ function App() {
           />
           <Route
             exact
-            path='/websites'
+            path="/websites"
             render={props => (
               <Websites
                 {...props}
@@ -85,7 +86,7 @@ function App() {
           />
           <Route
             exact
-            path='/revolution'
+            path="/revolution"
             render={props => (
               <Revolution
                 {...props}
@@ -96,7 +97,7 @@ function App() {
           />
           <Route
             exact
-            path='/about'
+            path="/about"
             render={props => (
               <About
                 {...props}
@@ -107,7 +108,7 @@ function App() {
           />
           <Route
             exact
-            path='/contact'
+            path="/contact"
             render={props => (
               <Contact
                 {...props}
@@ -118,8 +119,14 @@ function App() {
           />
           <Route
             exact
-            path='/estimate'
-            component={() => <div style={{ height: '150vh' }}>Estimate</div>}
+            path="/estimate"
+            render={props => (
+              <Estimate
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
           />
         </Switch>
         <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />

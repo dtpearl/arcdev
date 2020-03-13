@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Snackboo from '@material-ui/core/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import background from '../assets/background.jpg';
 import mobileBackground from '../assets/mobileBackground.jpg';
@@ -428,7 +428,7 @@ export default function Contact(props) {
           </Grid>
         </DialogContent>
       </Dialog>
-      <Snackboo
+      <Snackbar
         open={alert.open}
         message={alert.message}
         ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}

@@ -71,11 +71,13 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     ...theme.typography.estimate,
+    backgroundColor: theme.palette.common.orange,
     borderRadius: '50px',
     marginLeft: '50px',
     marginRight: '25px',
     height: '45px',
     color: 'white',
+    zIndex: 1302,
     '&:hover': {
       backgroundColor: theme.palette.secondary.light
     }
@@ -246,17 +248,25 @@ export default function Header(props) {
             label={route.name}
           />
         ))}
+        <Tab
+          // ariaOwns={anchorEl ? 'simple-menu' : undefined}
+          // ariaPopup={anchorEl ? 'true' : undefined}
+          className={classes.button}
+          component={Link}
+          to="/estimate"
+          label="Free Estimate"
+        />
       </Tabs>
-      <Button
+      {/* <Button
+        component={Link}
+        to="/estimate"
         variant="contained"
         color="secondary"
         className={classes.button}
-        component={Link}
-        to="/estimate"
-        onClick={() => setValue(5)}
+        onClick={() => props.setValue(5)}
       >
         Free Estimate
-      </Button>
+      </Button> */}
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
